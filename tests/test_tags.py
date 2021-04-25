@@ -1,6 +1,5 @@
 import unittest
-import _tags_generator
-from tags import *
+from htmgem.tags import *
 
 
 class TestGem(unittest.TestCase):
@@ -67,7 +66,23 @@ class TestGem(unittest.TestCase):
         self.assertEqual(res, '<div><ul class="collection margin-top"><li>item</li> <li>1</li> <li id="myid"></li> <li class="mx-auto p-4" @click.away="open = false" x-data="{ open: false }">some content for li</li></ul></div>')
         
 
+    def test_list_of_children(self):
+        res = head([
+            meta({'charset':'UTF-8'}),
+            meta({'name':'viewport', 'content':'width=device-width, initial-scale=1.0'})
+        ])
 
+        # print(res)
+
+        self.assertEqual(res, '<head><meta charset="UTF-8"></meta> <meta name="viewport" content="width=device-width, initial-scale=1.0"></meta></head>')
+
+    def test_script_js(self):
+
+        res = script({'src':'https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js', 'defer':None})
+            
+        # print(res)
+
+        self.assertEqual(res, '<script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js" defer></script>')
 
 
 

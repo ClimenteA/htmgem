@@ -10,6 +10,7 @@ def _prep_attrs(attrs):
     
     attrs = " ".join([f'{k}="{v}"' for k,v in attrs.items()])
     attrs = " " + attrs if attrs else attrs 
+    attrs = attrs.replace('="None"', '')
     
     return attrs
 
@@ -46,6 +47,9 @@ def _prep_args(attrs, children):
     if isinstance(attrs, tuple):
         if len(attrs) == 2:
             attrs, children = attrs
+
+    if isinstance(attrs, list):
+        attrs, children = None, attrs
     
     attrs = str(attrs) if isinstance(attrs, int) else attrs
     children = str(children) if isinstance(children, int) else children
@@ -68,6 +72,9 @@ def _prep_args(attrs, children):
 
     if dict_attrs and no_children:
         return _prep_attrs(attrs), ""
+
+    if no_attrs and list_children:
+        return "", _prep_children(children)
     
     raise Exception(f"Can't parse attrs:{attrs}({type(attrs)}) and children:{children}({type(children)})")
     
