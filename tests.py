@@ -1,5 +1,5 @@
 import unittest
-import tags_generator
+import _tags_generator
 from tags import *
 
 
@@ -7,7 +7,6 @@ class TestGem(unittest.TestCase):
 
     def test_no_params(self):
         self.assertEqual(h1(), '<h1></h1>')        
-
 
     def test_tag_with_attrs_and_text_child(self):
         res = h1({"class":"test"}, "Some title")
@@ -44,7 +43,20 @@ class TestGem(unittest.TestCase):
 
     def test_generate_list_with_map(self):
 
-        some_list = ["item", 1, {"k": "v"}]
+        some_list = [
+            "item",         # just children str
+            1,              # just children int  
+            {"id": "myid"}, # just attrs
+
+            ( #tuple with attrs and children and some alpinejs
+                {
+                    "class":["mx-auto", "p-4"], 
+                    "@click.away":"open = false",
+                    "x-data":"{ open: false }"
+                }, 
+                "some content for li"
+            )
+        ]
 
         res = div(
             ul( {"class":["collection", "margin-top"]}, [li(i) for i in some_list] )
@@ -52,10 +64,8 @@ class TestGem(unittest.TestCase):
 
         # print(res)
 
-        self.assertEqual(res, '<div><ul class="collection margin-top"><li>item</li> <li>1</li> <li k="v"></li></ul></div>')
+        self.assertEqual(res, '<div><ul class="collection margin-top"><li>item</li> <li>1</li> <li id="myid"></li> <li class="mx-auto p-4" @click.away="open = false" x-data="{ open: false }">some content for li</li></ul></div>')
         
-
-
 
 
 
