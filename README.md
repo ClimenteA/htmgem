@@ -99,6 +99,11 @@ div({'class': 'flex items-center'}, [p(f"My paragraph{nbr}") for nbr in range(3)
 ​
 div([p, p, p])
 # '<div><p></p><p></p><p></p></div>'
+
+
+input_({'type':'text', 'required':None})
+# '<input type="text" required></input>' 
+
 ```
 
 - `attrs` : is a dictionary which contains attribute name (class, id, anything) and the corresponding value;
@@ -157,9 +162,9 @@ div(DataNbrList())
 ```
 
 
-I quess by now you got a feel on how `htmgem` works, not how you can integrate this with Flask or other framework?
+I quess by now you got a feel on how `htmgem` works, how you can integrate htmgem with Flask or other framework?
 
-> HTML is just text
+> HTML is just text (more specifically text/html)
 
 ```py
 from flask import Flask, request
