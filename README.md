@@ -9,6 +9,12 @@ This allows you to create dinamically html pages and **html components** on the 
 
 ## Quickstart
 
+```py
+
+pip3 install htmgem
+
+```
+
 Bellow you have an html boilerplate created with htmgem:
 
 ```py
