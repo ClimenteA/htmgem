@@ -222,7 +222,7 @@ Of course, the js code can be optimized, but same is the case for Python.
 - It's faster to sent HTML than sending JSON which is parsed later by Javascript;
 - Minimum javascript skills to create a dynamic component (no need to learn Vue, React, Angular, Svelte or other frontend framework);
 - No need to worry about the js bundle size (you just send html);
-- Better performance by including `@functools.lru_cache(maxsize=None)` or `@functools.cache`(3.9+) over the components ([read python docs](https://docs.python.org/3/library/functools.html));
+- Better performance by decorating components with `@functools.lru_cache(maxsize=None)` or `@functools.cache`(3.9+) ([read python docs](https://docs.python.org/3/library/functools.html));
 - For interactivity js features you can use either [AlpineJs](https://github.com/alpinejs/alpine) or [LuciaJs](https://lucia.js.org/);
 - Easy Lighthouse: Performance, SEO.
 
