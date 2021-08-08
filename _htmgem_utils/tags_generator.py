@@ -59,6 +59,8 @@ def _prep_children(children):
                     children_list.append(obj[0](obj[1]))
             elif isinstance(obj, str):
                 children_list.append(obj)
+            elif obj is None:
+                continue
             else:
                 raise Exception(f"Can't parse children:{children}({type(children)})")
     

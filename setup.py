@@ -13,7 +13,7 @@ with open("README.md", "r") as fh:
 
 setup(
 	name="htmgem",
-	version="0.0.1",
+	version="0.0.2",
 	description="Generate HTML with Python!",
 	url="https://github.com/ClimenteA/htmgem",
 	author="Alin Climente",
